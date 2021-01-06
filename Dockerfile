@@ -16,7 +16,7 @@ RUN apk --no-cache add \
     curl-dev && \
   git clone https://github.com/s3fs-fuse/s3fs-fuse.git && \
   cd s3fs-fuse && \
-  git checkout tags/${S3FS_VERSION} && \
+  git checkout 8d66b0e && \
   ./autogen.sh && \
   ./configure --prefix=/usr && \
   make -j && \
@@ -75,4 +75,4 @@ VOLUME [ "/opt/s3fs/bucket" ]
 # Listing the files will keep the share active and avoid that the remote server
 # closes the connection.
 ENTRYPOINT [ "tini", "-g", "--", "docker-entrypoint.sh" ]
-CMD [ "empty.sh" ]
+CMD [ "ls.sh" ]
